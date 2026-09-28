@@ -169,6 +169,10 @@ cython_debug/
 
 # Ruff stuff:
 .ruff_cache/
-
-# PyPI configuration file
-.pypirc
+# Trained model
+model/*.joblib
+# Jupyter
+.ipynb_checkpoints/
+# OS
+.DS_Store
+Thumbs.db
