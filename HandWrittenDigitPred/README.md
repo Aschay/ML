@@ -50,7 +50,9 @@ Dropout(0.5)
 Dense(10)
 ```
 
-The final layer outputs 10 logits, one for each digit (`0–9`).
+The final layer outputs 10 **logits**, one for each digit (`0–9`).
+
+Dropout is used as regularization to reduce overfitting. A`25%` dropout rate is used after the convolution blocks as a moderate level of regularization, while `50%` is used before the final classifier because the fully connected layer has substantially more parameters and can be more prone to overfitting.
 
 ## Training
 
@@ -59,9 +61,11 @@ The final layer outputs 10 logits, one for each digit (`0–9`).
 * Metric: Sparse Categorical Accuracy
 * Batch size: 128
 * Maximum epochs: 10
-* Early stopping: monitors `val_loss`
-* Patience: 3
+* Early stopping: monitors `val_loss` to prevent unnecessary training
+* Patience: 3 epochs, allowing some validation-loss fluctuation before stopping
 * Best weights restored after training
+
+The model uses logits instead of applying softmax in the final layer. With `from_logits=True`, the loss function applies the required softmax operation internally. This is numerically more stable than calculating softmax probabilities separately.
 
 ## Results
 
@@ -72,23 +76,9 @@ The final layer outputs 10 logits, one for each digit (`0–9`).
 | Test loss                |     0.0173 |
 
 ## Deployment
+Possible approaches:
 
-Deployment has **not been implemented yet**.
+1. REST API with direct image upload
+2. Edge/local inference(model compression with quantizationa and pruning )
 
-Possible future approaches:
-
-1. **REST API** — client uploads an image → API preprocesses it → model predicts the digit.
-2. **Client-side resizing/compression** — reduce image size before uploading.
-3. **Object storage + presigned URL** — upload the image to storage and let an inference service process it.
-4. **Edge/local inference** — run the model directly on the device.
-
-For deployment, the `/255` normalization used during training must also be applied during inference, unless preprocessing is moved inside the model.
-
-## Files
-
-```text
-README.md
-mnist.ipynb
-```
-
-The notebook contains the complete dataset preparation, model definition, training, visualization, and test evaluation.
+For direct API uploads and object-storage uploads, client-side resizing/compression can reduce network transfer size. 
