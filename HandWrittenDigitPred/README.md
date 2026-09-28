@@ -79,6 +79,6 @@ The model uses logits instead of applying softmax in the final layer. With `from
 Possible approaches:
 
 1. REST API with direct image upload
-2. Edge/local inference(model compression with quantizationa and pruning )
+2. Edge/local inference(model compression with quantization and pruning )
 
-For direct API uploads and object-storage uploads, client-side resizing/compression can reduce network transfer size. 
+For direct API uploads and object-storage uploads, client-side resizing/compression can reduce network transfer size.
