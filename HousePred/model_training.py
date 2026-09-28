@@ -36,6 +36,8 @@ model.fit(X_train, y_train)
 # Evaluate on the test set
 predictions = model.predict(X_test)
 print("MSE:", mean_squared_error(y_test, predictions))
+rmse = mean_squared_error(y_test, predictions) ** 0.5
+print("RMSE:", rmse)
 
 # Create model directory
 os.makedirs("model", exist_ok=True)
