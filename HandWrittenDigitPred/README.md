@@ -76,6 +76,7 @@ The model uses logits instead of applying softmax in the final layer. With `from
 | Test loss                |     0.0173 |
 
 ## Deployment
+
 Possible approaches:
 
 1. REST API with direct image upload

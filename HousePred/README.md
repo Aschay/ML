@@ -325,6 +325,5 @@ This corresponds to approximately **$1.36 million**.
 * **Docker** — containerization
 
 ## 9. End-to-End Workflow
-## 9. End-to-End Workflow
 
 1. Load dataset → 2. Select features → 3. Split 80/20 → 4. Train Linear Regression → 5. Evaluate with RMSE → 6. Save `.joblib` → 7. Build Docker image → 8. Start FastAPI container → 9. Load model → 10. POST `/predict` → 11. Generate and return prediction
