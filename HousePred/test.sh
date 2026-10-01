@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#python3 model_training.py (local machine has python,other modules installed same in as requirement.txt)
-
 docker build -t house-price-prediction-api:v1 .
 
 docker run -d -p 80:80 house-price-prediction-api:v1

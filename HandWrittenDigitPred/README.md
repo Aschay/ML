@@ -6,9 +6,13 @@ A CNN-based image classification project using TensorFlow/Keras and the MNIST da
 
 MNIST contains 70,000 handwritten digit images:
 
-* 54,000 training
-* 6,000 validation
-* 10,000 test
+* 60,000 training images
+* 10,000 test images
+
+The 60,000 training images are further split into:
+
+* 54,000 training images
+* 6,000 validation images
 
 Images are normalized from `uint8 [0,255]` to `float32 [0,1]`.
 
@@ -52,7 +56,7 @@ Dense(10)
 
 The final layer outputs 10 **logits**, one for each digit (`0–9`).
 
-Dropout is used as regularization to reduce overfitting. A`25%` dropout rate is used after the convolution blocks as a moderate level of regularization, while `50%` is used before the final classifier because the fully connected layer has substantially more parameters and can be more prone to overfitting.
+Dropout is used as regularization to reduce overfitting. A `25%` dropout rate is used after the convolution blocks as a moderate level of regularization, while `50%` is used before the final classifier because the fully connected layer has substantially more parameters and can be more prone to overfitting.
 
 ## Training
 
@@ -80,6 +84,6 @@ The model uses logits instead of applying softmax in the final layer. With `from
 Possible approaches:
 
 1. REST API with direct image upload
-2. Edge/local inference(model compression with quantization and pruning )
+2. Edge/local inference( model compression with quantization and pruning )
 
 For direct API uploads and object-storage uploads, client-side resizing/compression can reduce network transfer size.
