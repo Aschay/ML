@@ -1,5 +1,11 @@
 #!/bin/bash
 
+python -m venv .venv
+source .venv/bin/activate        # macOS / Linux
+# .venv\Scripts\activate         # Windows (PowerShell / CMD)
+pip install -r requirements.txt
+python model_training.py
+
 docker build -t house-price-prediction-api:v1 .
 
 docker run -d -p 80:80 house-price-prediction-api:v1
